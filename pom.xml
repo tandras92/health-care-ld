@@ -15,8 +15,24 @@
 	<description>Linked Data project for Health Care Data</description>
 	<properties>
 		<java.version>20</java.version>
-		<schema-org-generator.version>0.6.0</schema-org-generator.version>
+		<maven.compiler.source>20</maven.compiler.source>
+		<maven.compiler.target>20</maven.compiler.target>
+		<rdf4j.version>5.0.0-M1</rdf4j.version>
+		<avaje.jsonb.version>1.7</avaje.jsonb.version>
+		<record.builder.version>37</record.builder.version>
+<!--		<schema-org-generator.version>0.6.0</schema-org-generator.version>-->
 	</properties>
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.eclipse.rdf4j</groupId>
+				<artifactId>rdf4j-bom</artifactId>
+				<version>${rdf4j.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -44,30 +60,46 @@
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-devtools</artifactId>
-			<scope>runtime</scope>
-			<optional>true</optional>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-configuration-processor</artifactId>
 			<optional>true</optional>
+		</dependency>
+<!--		<dependency>-->
+<!--			<groupId>io.avaje</groupId>-->
+<!--			<artifactId>avaje-jsonb-spring-starter</artifactId>-->
+<!--			<version>${avaje.jsonb.version}</version>-->
+<!--		</dependency>-->
+<!--		<dependency>-->
+<!--			<groupId>io.avaje</groupId>-->
+<!--			<artifactId>avaje-jsonb-generator</artifactId>-->
+<!--			<version>${avaje.jsonb.version}</version>-->
+<!--			<optional>true</optional>-->
+<!--		</dependency>-->
+		<dependency>
+			<groupId>io.soabase.record-builder</groupId>
+			<artifactId>record-builder-processor</artifactId>
+			<version>${record.builder.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
 			<optional>true</optional>
 		</dependency>
+<!--		<dependency>-->
+<!--			<groupId>be.ugent.rml</groupId>-->
+<!--			<artifactId>rmlmapper</artifactId>-->
+<!--			<version>6.2.1</version>-->
+<!--		</dependency>-->
 		<dependency>
-			<groupId>be.ugent.rml</groupId>
-			<artifactId>rmlmapper</artifactId>
-			<version>6.2.1</version>
+			<groupId>org.eclipse.rdf4j</groupId>
+			<artifactId>rdf4j-spring</artifactId>
+			<version>${rdf4j.version}</version>
 		</dependency>
-		<dependency>
-			<groupId>com.weedow</groupId>
-			<artifactId>schema-org-generator-maven-plugin</artifactId>
-			<version>${schema-org-generator.version}</version>
-		</dependency>
+
+<!--		<dependency>-->
+<!--			<groupId>com.weedow</groupId>-->
+<!--			<artifactId>schema-org-generator-maven-plugin</artifactId>-->
+<!--			<version>${schema-org-generator.version}</version>-->
+<!--		</dependency>-->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
@@ -91,6 +123,7 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<configuration>
+						<mainClass>com.tandras.ld.healthcare.HealthCareLdApplication</mainClass>
 					<excludes>
 						<exclude>
 							<groupId>org.projectlombok</groupId>
@@ -100,17 +133,65 @@
 				</configuration>
 			</plugin>
 			<plugin>
-				<groupId>com.weedow</groupId>
-				<artifactId>schema-org-generator-maven-plugin</artifactId>
-				<version>${schema-org-generator.version}</version>
-				<executions>
-					<execution>
-						<goals>
-							<goal>generate</goal>
-						</goals>
-					</execution>
-				</executions>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.11.0</version>
+				<goals>
+					<goal>compile</goal>
+				</goals>
+				<configuration>
+					<outputDirectory>${project.build.directory}/generated-sources/annotations</outputDirectory>
+					<annotationProcessorPaths>
+<!--						<annotationProcessorPath>-->
+<!--							<groupId>io.avaje</groupId>-->
+<!--							<artifactId>avaje-jsonb-generator</artifactId>-->
+<!--							<version>${avaje.jsonb.version}</version>-->
+<!--						</annotationProcessorPath>-->
+						<annotationProcessorPath>
+							<groupId>org.projectlombok</groupId>
+							<artifactId>lombok</artifactId>
+							<version>1.18.28</version>
+						</annotationProcessorPath>
+						<annotationProcessorPath>
+								<groupId>io.soabase.record-builder</groupId>
+								<artifactId>record-builder-processor</artifactId>
+								<version>${record.builder.version}</version>
+						</annotationProcessorPath>
+					</annotationProcessorPaths>
+					<failOnError>true</failOnError>
+				</configuration>
+				<dependencies>
+<!--					<dependency>-->
+<!--						<groupId>io.avaje</groupId>-->
+<!--						<artifactId>avaje-jsonb-generator</artifactId>-->
+<!--						<version>${avaje.jsonb.version}</version>-->
+<!--						<optional>true</optional>-->
+<!--					</dependency>-->
+					<dependency>
+						<groupId>org.projectlombok</groupId>
+						<artifactId>lombok</artifactId>
+						<version>1.18.28</version>
+					</dependency>
+					<dependency>
+						<groupId>io.soabase.record-builder</groupId>
+						<artifactId>record-builder-processor</artifactId>
+						<version>${record.builder.version}</version>
+					</dependency>
+				</dependencies>
 			</plugin>
+
+<!--			<plugin>-->
+<!--				<groupId>com.weedow</groupId>-->
+<!--				<artifactId>schema-org-generator-maven-plugin</artifactId>-->
+<!--				<version>${schema-org-generator.version}</version>-->
+<!--				<executions>-->
+<!--					<execution>-->
+<!--						<goals>-->
+<!--							<goal>generate</goal>-->
+<!--						</goals>-->
+<!--					</execution>-->
+<!--				</executions>-->
+<!--			</plugin>-->
 		</plugins>
 	</build>
 

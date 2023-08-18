@@ -23,6 +23,7 @@ Follow the steps below to set up and run the project:
 * https://build.fhir.org/http.html
 * https://faircookbook.elixir-europe.org/content/recipes/interoperability/rdf-conversion.html
 * https://community.intersystems.com/post/creating-and-validating-any-hl7-fhir-resource-using-fhir-schema-help-intellisense-and-auto
+* https://rdf4j.org/documentation/
 * https://schema.org/HealthInsurancePlan
 * https://github.com/Kobee1203/schema-org-java
 * https://github.com/RMLio/rmlmapper-java
@@ -33,3 +34,4 @@ Follow the steps below to set up and run the project:
 * http://hl7.org/fhir/downloads.html
 * https://github.com/linkedpipes/etl
 * https://etl.linkedpipes.com/
+* https://avaje.io/jsonb/
