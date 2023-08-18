@@ -1,4 +1,4 @@
-package com.tandras.ld.healthcare.dto;
+package tandras.healthld.dto;
 
 import io.soabase.recordbuilder.core.RecordBuilderFull;
 

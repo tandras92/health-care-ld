@@ -1,4 +1,4 @@
-package com.tandras.ld.healthcare;
+package tandras.healthld;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

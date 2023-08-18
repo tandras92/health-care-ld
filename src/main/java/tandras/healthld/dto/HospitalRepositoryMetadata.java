@@ -1,4 +1,4 @@
-package com.tandras.ld.healthcare.dto;
+package tandras.healthld.dto;
 
 import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonProperty;

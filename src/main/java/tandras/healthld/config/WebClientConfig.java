@@ -1,4 +1,4 @@
-package com.tandras.ld.healthcare.config;
+package tandras.healthld.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

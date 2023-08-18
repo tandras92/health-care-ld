@@ -1,4 +1,4 @@
-package com.tandras.ld.healthcare.util;
+package tandras.healthld.util;
 
 import java.net.URLDecoder;
 import java.net.URLEncoder;

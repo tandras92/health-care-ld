@@ -1,7 +1,7 @@
-package com.tandras.ld.healthcare.controller;
+package tandras.healthld.controller;
 
-import com.tandras.ld.healthcare.client.PriceTransparencyClient;
-import com.tandras.ld.healthcare.dto.HospitalRepositoryMetadata;
+import tandras.healthld.client.PriceTransparencyClient;
+import tandras.healthld.dto.HospitalRepositoryMetadata;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

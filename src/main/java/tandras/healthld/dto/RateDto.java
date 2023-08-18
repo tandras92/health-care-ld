@@ -1,4 +1,4 @@
-package com.tandras.ld.healthcare.dto;
+package tandras.healthld.dto;
 
 public record RateDto(
 

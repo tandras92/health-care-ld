@@ -1,8 +1,8 @@
-package com.tandras.ld.healthcare.client;
+package tandras.healthld.client;
 
-import com.tandras.ld.healthcare.dto.HospitalRepositoryMetadata;
-import com.tandras.ld.healthcare.service.PriceTransparencyService;
-import com.tandras.ld.healthcare.util.UrlUtil;
+import tandras.healthld.dto.HospitalRepositoryMetadata;
+import tandras.healthld.service.PriceTransparencyService;
+import tandras.healthld.util.UrlUtil;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
