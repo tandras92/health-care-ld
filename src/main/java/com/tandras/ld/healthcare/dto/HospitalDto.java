@@ -1,31 +1,30 @@
 package com.tandras.ld.healthcare.dto;
 
-import com.fasterxml.jackson.databind.PropertyNamingStrategies;
-import com.fasterxml.jackson.databind.annotation.JsonNaming;
-
+import com.fasterxml.jackson.annotation.JsonProperty;
+import io.soabase.recordbuilder.core.RecordBuilderFull;
 import java.time.LocalDate;
 
-@JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy.class)
+@RecordBuilderFull
 public record HospitalDto(
         String id,
         String ein,
         String name,
-        String altName,
-        String systemName,
-        String address,
+        @JsonProperty("alt_name") String altName,
+        @JsonProperty("system_name") String systemName,
+        @JsonProperty("addr") String address,
         String city,
         String state,
         String zip,
-        String phoneNumber,
-        String urbanRural,
+        String phone,
+        @JsonProperty("urban_rural") String urbanRural,
         String category,
-        String controlType,
-        String medicareTerminationStatus,
-        LocalDate lastUpdated,
-        String fileName,
-        String mrfUrl,
+        @JsonProperty("control_type") String controlType,
+        @JsonProperty("medicare_termination_status") String medicareTerminationStatus,
+        @JsonProperty("last_updated") LocalDate lastUpdated,
+        @JsonProperty("file_name") String fileName,
+        @JsonProperty("mrf_url") String mrfUrl,
         String permalink,
-        String transparencyPage,
-        String additionalNotes
+        @JsonProperty("transparency_page") String transparencyPage,
+        @JsonProperty("additional_notes") String additionalNotes
 ) {
 }
